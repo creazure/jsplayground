@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Javascript par le pratique</title>
+  <link rel="stylesheet" href="style.css">
+    <script>
+    
+    </script>
+</head>
+<body>
+  ...
+  <!-- Le reste du contenu -->
+  ...
+    <script>
+        function Vehicls(brand, model, color){
+             this.model = model;
+             this.brand = brand;
+             this.color = color;
+            this.speed = 0;
+        }
+        const vehicl1 = new Vehicls('Renault', '206', 'rouge');
+        const vehicl2 = new Vehicls('Renault', 'lagune', 'noir');
+        const vehicl3 = new Vehicls('Audi', 'A4', 'blanc');
+        
+        Vehicls.prototype.country = 'France';
+        Vehicls.prototype.year = 2017;
+        vehicl3.year = 2016;
+        vehicl3.driver = 'Sam';
+        
+        Vehicls.prototype.honk = function (){
+            console.log('tuuuuuuuuuuuuuuuut');
+        }
+        Vehicls.prototype.accelerate = function (){
+            this.speed += 10;
+        }
+       
+        vehicl3.country = 'Allemagne';
+        
+        console.log('Vehicls ', Vehicls.prototype);
+        console.log('vehicl1.__proto__ ', vehicl1.__proto__);
+        console.log('vehicl2.__proto__ ', vehicl2.__proto__);
+        console.log('vehicl2', vehicl2);
+        console.log('vehicl3.__proto__ ', vehicl3.__proto__);
+        console.log('vehicl3 ', vehicl3);
+        console.log('nos keys de vehicl 1:', Object.keys(vehicl1));
+        console.log('vehicl1.country', vehicl1.country);
+        console.log('vehicl3.country', vehicl3.country);
+        console.log ('vehicl1.__proto__ === Vehicls.prototype: ', vehicl1.__proto__ === Vehicls.prototype);
+        
+        //chaine d'héritage prototypale
+        function Bike(brand, model, color, fullPowered, exhaustPipeBrand){
+            console.log('dans le constructor de Bike');
+            Vehicls.call(this, this.brand, this.model, this.color);
+            this.fullPowered = fullPowered;
+            this.exhaustPipeBrand = exhaustPipeBrand;
+        }
+        Bike.prototype = Object.create(Vehicls.prototype);
+        Bike.prototype.constructor = Bike;
+        const zx6r = new Bike ('kawa', 'Ninja ZX-6R', 'bleu', true, 'devil');
+        console.log(zx6r);
+    </script>
+</body>
+</html>

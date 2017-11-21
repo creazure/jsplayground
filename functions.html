@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Javascript par le pratique</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <button id="btnGreet">saluer</button> 
+    
+     <script>
+         //ananymous funcion passée en callback de la fonction addEventListner
+        var btnGreet = document.querySelector('#btnGreet');
+            btnGreet.addEventListener('click', () => {
+                console.log('click');
+            });
+         
+         //funcion declaration
+        function greet(firstName){
+            console .log('salut ' + firstName);
+            return true;
+        }
+        greet('Sam');
+        
+        // function expresion
+        var sayGoodBye = function sayGoodBye(firstName){
+            var resultat = "au revoir " + firstName;
+            console.log(resultat);
+        }
+        sayGoodBye('titi');
+         
+        //Immediatly Invoked Funcion Expression IIFE
+         var plane = { planetype: 'Airbus'};
+         (function(){
+             console.log('IFEE');
+             plane.country = 'France';
+             console.log(plane);
+         }(plane))
+         
+         //on psse des paramètres
+         function eat (food, quantity = 3){
+             console.log(`je mange: ${food}. Quantité mangée: ${quantity}`);
+         }
+         eat('galett'); // on pass des arguments
+        
+    </script>
+</body>
+</html>

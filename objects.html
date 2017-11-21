@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Javascript par le pratique</title>
+  <link rel="stylesheet" href="style.css">
+    <script>
+    
+    </script>
+</head>
+<body>
+  ...
+  <!-- Le reste du contenu -->
+  ...
+    <script>
+    //object literale syntaxe
+        const vehicle = {
+            id: 1,
+            brand: 'Audi',
+            model: 'A6',
+            color: 'black',
+            honk: function(){
+                console.log('tuuuuuuuuuuuuuuuuuut');
+            }
+        };
+        const keys = Object.keys(vehicle); //méthode statique
+        keys.map((k)=>{
+            console.log(`voici la clé ${k}`);
+        })
+        
+        //vehicle.model = "A4";
+        //console.log(vehicle.honk());
+        //console.log(keys);
+        Object.defineProperty(vehicle, 'summary', {
+            get: function () {
+                return `vehicle ${this.brand} de couleur ${this.color}`;             
+            },
+            set: function(value){
+                const caracterics = value.split(',');
+                this.brand = caracterics[0];
+                this.model = caracterics[1];
+                this.color = caracterics[2];
+            }
+        });
+        
+        vehicle.summary = 'Peugeot, 206, noir';
+        console.log(vehicle.summary);
+        console.log(vehicle);
+        
+        //copie object
+        const person = {
+            id: 1,
+            firstName: 'Alain',
+            lastName: 'Dupont',
+            job: 'dev'
+        };
+        const person2 = Object.assign({}, person, {job:'investisseur', age: 46}); //ES5
+        const person3 = {...person};
+        const person4 = JSON.parse(JSON.stringify(person));
+        console.log(person);
+        console.log(person2);
+        console.log(person3);
+        console.log(person4);
+        
+        //le constructor
+         function Vehicls(brand, model, color){
+             this.model = model;
+             this.brand = brand;
+             this.color = color;
+         }
+        const vehicls = new Vehicls('Renault', '206', 'rouge');
+        const vehicls2 = new Vehicls('Renault', 'lagune', 'noir');
+        console.log(vehicls);
+        console.log(vehicls2);
+    </script>
+</body>
+</html>

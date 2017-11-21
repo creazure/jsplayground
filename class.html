@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Javascript par le pratique</title>
+  <link rel="stylesheet" href="style.css">
+    <script>
+    
+    </script>
+</head>
+<body>
+  ...
+  <!-- Le reste du contenu -->
+  ...
+    
+    <script>
+        console.log(this); 
+        class Vehicle {
+            constructor(brand, model, color){
+                console.log('dans le constructor de la CLASSE Vehicle');
+                console.log('this depuis un constructor parent', this);
+                this.brand = brand;
+                this.model = model;
+                this.color = color;
+            }
+        } //end class Vehicle
+        
+        class Bike extends Vehicle {
+            constructor(brand, model, color, fullPowered, exhaustPipeBrand){
+                console.log('dans le constructor de la CLASSE Bike');
+                super(brand, model, color);
+                console.log('this depuis un constructor enfant', this);
+                this.fullPowered = fullPowered;
+                this.exhaustPipeBrand = exhaustPipeBrand;
+            }
+        }//end class Bike
+        
+        const zx6r = new Bike('kawa', 'Ninja ZX-6R', 'bleu', true, 'devil');
+        console.log(zx6r);
+    </script>
+</body>
+</html>
