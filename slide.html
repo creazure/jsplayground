@@ -14,14 +14,15 @@
     }
    </style>
    <script>
+       
 $(function() {
     var $range = $(".sidebar-range-slider-js"),
         $from = $(".js-from"),
         $to = $(".js-to"),
         min = 100,
-        max = 1E4;   
+        max = 1E4;
     $range.ionRangeSlider({
-        type: "double",
+        type: "single",
         min: min,
         max: max,
         prettify_enabled: true,
@@ -37,7 +38,7 @@ $(function() {
     $range = $range.data("ionRangeSlider");
     var updateValues = function() {
         var res = $range.result;
-        console.log(res); 
+        console.log(res);
         $from.val(number_format(res.from, true));
         $to.val(number_format(res.to,true))
     };
